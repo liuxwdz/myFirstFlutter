@@ -1,21 +1,35 @@
 import 'package:flutter/material.dart';
+import 'cardItem.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    theme: ThemeData.light(),
-      home: Scaffold(
+        theme: ThemeData(primaryColor: Colors.blue),
+        home: MyHomeDemo());
+  }
+}
+
+class MyHomeDemo extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => HomeDemoState();
+}
+
+class HomeDemoState extends State<MyHomeDemo> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
-          title: Text("data"),
+          title: Text("Demo"),
         ),
-        body: Center(
-          child: Text("data"),
-        ),
-      ),
-    );
+        backgroundColor: Colors.blue,
+        body: ListView.builder(
+          itemBuilder: (context, index) {
+            return MyCard();
+          },
+          itemCount: 10,
+        ));
   }
 }
